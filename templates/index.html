@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>स्मार्ट सिंचाई प्रणाली</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🌾 स्मार्ट सिंचाई AI प्रणाली</h1>
+        <p>किसान भाई, नीचे अपनी फसल और खेत की जानकारी भरें</p>
+
+        <form action="/predict" method="POST" class="form-grid">
+
+            <label>फसल का प्रकार</label>
+            <select name="crop_type" required>
+            <option value="wheat">Wheat</option>
+            <option value="rice">Rice</option>
+            <option value="maize">Maize</option>
+            <option value="tomato">Tomato</option>
+            <option value="cotton">Cotton</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="potato">Potato</option>
+            <option value="mustard">Mustard</option>
+            <option value="onion">Onion</option>
+            <option value="soybean">Soybean</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="barley">Barley</option>
+            <option value="peas">Peas</option>
+            <option value="chickpea">Chickpea</option>
+            <option value="lentil">Lentil</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="cauliflower">Cauliflower</option>
+            <option value="brinjal">Brinjal</option>
+            <option value="chilli">Chilli</option>
+            <option value="okra">Okra</option>
+            <option value="banana">Banana</option>
+            <option value="papaya">Papaya</option>
+            <option value="mango">Mango</option>
+            <option value="millet">Millet</option>
+            <option value="sorghum">Sorghum</option>
+        </select>
+
+            <label>फसल की उम्र (दिनों में)</label>
+            <input type="number" name="crop_age_days" required>
+
+            <label>मिट्टी की नमी (%)</label>
+            <input type="number" step="0.01" name="soil_moisture" required>
+
+            <label>मिट्टी का प्रकार</label>
+            <select name="soil_type" required>
+            <option value="sandy">Sandy</option>
+            <option value="loamy">Loamy</option>
+            <option value="clay">Clay</option>
+            <option value="silt">Silt</option>
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="alluvial">Alluvial</option>
+        </select>
+
+            <label>तापमान (°C)</label>
+            <input type="number" step="0.01" name="temperature_c" required>
+
+            <label>हवा में नमी (%)</label>
+            <input type="number" step="0.01" name="humidity_percent" required>
+
+            <label>अगले 24 घंटे में बारिश की संभावना (%)</label>
+            <input type="number" name="rain_probability_next_24h" required>
+
+            <label>पिछली सिंचाई को कितने दिन हुए</label>
+            <input type="number" name="last_irrigation_days" required>
+
+            <label>मिट्टी का तापमान (°C)</label>
+            <input type="number" step="0.01" name="soil_temperature_c" required>
+
+            <label>हवा की गति (km/h)</label>
+            <input type="number" step="0.01" name="wind_speed_kmph" required>
+
+            <label>सिंचाई विधि</label>
+            <select name="irrigation_method" required>
+            <option value="drip">Drip</option>
+            <option value="sprinkler">Sprinkler</option>
+            <option value="flood">Flood</option>
+            <option value="furrow">Furrow</option>
+            <option value="rain_gun">Rain Gun</option>
+        </select>
+
+            <label>पानी का स्रोत</label>
+            <select name="water_source_type" required>
+            <option value="borewell">Borewell</option>
+            <option value="canal">Canal</option>
+            <option value="tank">Tank</option>
+            <option value="pond">Pond</option>
+            <option value="river">River</option>
+        </select>
+
+            <label>ड्रेनेज कंडीशन</label>
+            <select name="drainage_condition" required>
+            <option value="poor">Poor</option>
+            <option value="moderate">Moderate</option>
+            <option value="good">Good</option>
+        </select>
+
+            <label>मल्चिंग</label>
+            <select name="mulching" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+            <label>पिछले 48 घंटे में बारिश (mm)</label>
+            <input type="number" step="0.01" name="rainfall_last_48h_mm" required>
+
+            <label>क्या आज सिंचाई की गई?</label>
+            <select name="irrigation_done_today" required>
+            <option value="0">नहीं</option>
+            <option value="1">हाँ</option>
+        </select>
+
+            <label>खेत का आकार (acre)</label>
+            <input type="number" step="0.01" name="field_size_acre" required>
+
+            <label>Evapotranspiration (mm/day)</label>
+            <input type="number" step="0.01" name="evapotranspiration_mm_day" required>
+
+            <label>धूप के घंटे</label>
+            <input type="number" step="0.01" name="sunlight_hours" required>
+
+            <label>खाद स्तर</label>
+            <select name="fertilizer_level" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+            <label>ढलान स्तर</label>
+            <select name="slope_level" required>
+            <option value="flat">Flat</option>
+            <option value="moderate">Moderate</option>
+            <option value="sloped">Sloped</option>
+        </select>
+
+            <label>मौसम की स्थिति</label>
+            <select name="weather_condition" required>
+            <option value="sunny">Sunny</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="humid">Humid</option>
+            <option value="windy">Windy</option>
+        </select>
+
+            <button type="submit">🚀 परिणाम देखें</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

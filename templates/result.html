@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सिंचाई भविष्यवाणी परिणाम</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container result-box">
+        <h1>🌾 सिंचाई भविष्यवाणी परिणाम</h1>
+
+        <!-- Main Prediction -->
+        <div class="result-card">
+            <h2 style="color: green; margin-bottom: 20px;">
+                {{ result.irrigation_needed }}
+            </h2>
+
+            <p><strong>विश्वास स्तर (Confidence):</strong> {{ result.confidence }}%</p>
+            <p><strong>फसल की अवस्था (Crop Stage):</strong> {{ result.crop_stage }}</p>
+            <p><strong>मिट्टी संतृप्ति स्तर (Soil Saturation):</strong> {{ result.soil_saturation_level }}%</p>
+            <p><strong>जलभराव जोखिम (Waterlogging Risk):</strong> {{ result.waterlogging_risk }}</p>
+            <p><strong>अगली सिंचाई सलाह (Next Irrigation Action):</strong> {{ result.next_irrigation_action }}</p>
+            <p><strong>फसल जल आवश्यकता:</strong> {{ result.crop_water_requirement_mm }} mm</p>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="result-card" style="margin-top: 20px;">
+            <h2 style="color: #0b5ed7;">💧 पानी की मात्रा (Model 2)</h2>
+            <p><strong>कितना पानी देना है:</strong> {{ result.water_needed }} लीटर / एकड़</p>
+            <p><strong>कितनी देर तक पानी देना है:</strong> {{ result.duration }} मिनट</p>
+            <p><strong>पानी देने का सबसे अच्छा समय:</strong> {{ result.best_time }}</p>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="result-card" style="margin-top: 20px;">
+            <h2 style="color: #6f42c1;">⏰ अगली सिंचाई कब करें (Model 3)</h2>
+            <p><strong>अगली सिंचाई लगभग:</strong> {{ result.next_days }} दिन बाद करें</p>
+        </div>
+
+        <!-- Reasons -->
+        <div class="reason-box">
+            <h3>📌 निर्णय के कारण (Reasons):</h3>
+            <ul>
+                {% for reason in result.reasons %}
+                <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="/" class="back-btn">🔙 वापस जाएँ</a>
+    </div>
+
+</body>
+
+</html>

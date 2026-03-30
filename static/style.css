@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #dff6dd, #f5fff4);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 85%;
+    max-width: 1100px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    text-align: center;
+    color: #1b5e20;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    color: #444;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 20px;
+    margin-top: 25px;
+}
+
+label {
+    font-weight: bold;
+    color: #1b4332;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+button {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    grid-column: span 2;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+.card {
+    background: #f8fff8;
+    border-left: 6px solid #43a047;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #2e7d32;
+}
+
+.card p,
+.card li {
+    text-align: left;
+    color: #333;
+    line-height: 1.7;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 18px;
+    background: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.back-btn:hover {
+    background: #1b5e20;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    button {
+        grid-column: span 1;
+    }
+}
